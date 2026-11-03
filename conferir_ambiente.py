@@ -1,8 +1,8 @@
-"""Confere se o computador está pronto para a Atividade A9.
+"""Verifica se o computador está preparado para a Atividade A9.
 
-Execute dentro da pasta do repositório:
+Execute na pasta do repositório:
     python3 conferir_ambiente.py
-No Windows, troque python3 por py.
+No Windows, substitua python3 por py.
 """
 
 import subprocess
@@ -43,7 +43,7 @@ def numeros_da_versao(versao):
 
 
 def arquivos_alterados():
-    """Lista os arquivos do repositório alterados desde o download, ou None se não houver como saber."""
+    """Lista os arquivos do repositório modificados desde a cópia, ou None se a verificação não for possível."""
     if not Path(".git").is_dir():
         return None
     try:
@@ -72,24 +72,24 @@ def main():
 
     versao_python = sys.version_info[:2]
     if versao_python < PYTHON_MINIMO:
-        print("[PROBLEMA] Python", sys.version.split()[0], "é antigo demais. Instalem o Python 3.8 ou mais novo.")
+        print("[PROBLEMA] A versão", sys.version.split()[0], "do Python é anterior à exigida. Instalem o Python 3.8 ou uma versão mais recente.")
         sys.exit(1)
     print("[ok] Python", sys.version.split()[0])
 
     if not Path("biblioteca.py").is_file() or not Path("testes").is_dir():
         print("[PROBLEMA] O terminal não está na pasta do repositório. Pasta atual:", Path.cwd())
-        print("           Usem o comando cd para entrar na pasta onde está o arquivo biblioteca.py.")
+        print("           Utilizem o comando cd para acessar a pasta que contém o arquivo biblioteca.py.")
         sys.exit(1)
     print("[ok] Pasta do repositório")
 
     for pacote, minimo in (("pytest", PYTEST_MINIMO), ("pylint", PYLINT_MINIMO)):
         versao = versao_instalada(pacote)
         if versao is None:
-            print("[PROBLEMA]", pacote, "não está instalado para este Python. Executem:")
+            print("[PROBLEMA]", pacote, "não está instalado neste Python. Executem:")
             print("          ", comando, "-r requirements.txt")
             problemas = problemas + 1
         elif numeros_da_versao(versao) < minimo:
-            print("[PROBLEMA]", pacote, versao, "é antigo demais. Executem:")
+            print("[PROBLEMA] A versão", versao, "do", pacote, "é anterior à exigida. Executem:")
             print("          ", comando, "--upgrade", pacote)
             problemas = problemas + 1
         else:
@@ -97,18 +97,18 @@ def main():
 
     alterados = arquivos_alterados()
     if alterados:
-        print("[PROBLEMA] Arquivos alterados desde o download:", ", ".join(alterados))
-        print("           Para desfazer as alterações, executem: git restore .")
+        print("[PROBLEMA] Arquivos modificados desde a cópia do repositório:", ", ".join(alterados))
+        print("           Para desfazer as modificações, executem: git restore .")
         problemas = problemas + 1
     elif alterados is not None:
-        print("[ok] Nenhum arquivo do repositório foi alterado")
+        print("[ok] Nenhum arquivo do repositório foi modificado")
 
     print()
     if problemas == 0:
-        print("Tudo pronto. Podem seguir o roteiro da atividade.")
+        print("Ambiente preparado. Prossigam com o roteiro da atividade.")
     else:
-        print("Resolvam os itens marcados com PROBLEMA e executem este comando de novo.")
-        print("O guia técnico da atividade explica cada caso.")
+        print("Resolvam os itens marcados com PROBLEMA e executem esta verificação novamente.")
+        print("O guia técnico da atividade descreve a solução de cada caso.")
         sys.exit(1)
 
 
