@@ -1,6 +1,6 @@
 """Bateria 2.
 
-Casos que Renata, colega de Lucas, escreveu depois da entrega,
+Casos que Renata, colega de João, escreveu depois da entrega,
 procurando situações que o programa poderia tratar mal.
 """
 

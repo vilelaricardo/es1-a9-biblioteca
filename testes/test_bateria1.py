@@ -1,6 +1,6 @@
 """Bateria 1.
 
-Casos que Lucas apresentou à bibliotecária no dia da entrega,
+Casos que João apresentou à bibliotecária no dia da entrega,
 um para cada regra do balcão.
 """
 
