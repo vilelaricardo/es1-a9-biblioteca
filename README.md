@@ -8,6 +8,11 @@ Código da Atividade A9 de Engenharia de Software I. O roteiro da atividade desc
 - `testes/test_bateria1.py`: bateria 1 de testes.
 - `testes/test_bateria2.py`: bateria 2 de testes.
 - `conferir_ambiente.py`: verificação da preparação do computador para a atividade.
+- `atividade-a9-colab.ipynb`: execução da atividade no Google Colab.
+
+## Execução no Google Colab
+
+Para executar a atividade no navegador, sem instalar as ferramentas no computador, abram o [notebook da atividade no Google Colab](https://colab.research.google.com/github/vilelaricardo/es1-a9-biblioteca/blob/main/atividade-a9-colab.ipynb). É necessária uma conta Google. As seções seguintes não se aplicam a esse caso.
 
 ## Preparação
 
